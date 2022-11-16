@@ -1,0 +1,8 @@
+<div *ngIf="veiculo">
+  <h2>{{veiculo.Marca| uppercase}} Detalhes</h2>
+  <div>Id: {{veiculo.Id}}</div>
+  <div>
+    <label for="marca-veiculo">Marca: </label>
+    <input id="marca-veiculo" [(ngModel)]="veiculo.Marca" placeholder="marca">
+  </div>
+</div>
