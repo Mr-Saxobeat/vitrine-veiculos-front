@@ -9,7 +9,6 @@ import { Veiculo } from './veiculo';
 })
 export class VeiculosComponent implements OnInit {
   veiculos?: Veiculo[];
-  veiculoSelecionado?: Veiculo;
 
   constructor(private veiculoService: VeiculoService) { }
 
@@ -21,9 +20,4 @@ export class VeiculosComponent implements OnInit {
     this.veiculoService.getVeiculos()
       .subscribe(veiculos => this.veiculos = veiculos);
   }
-
-  onSelect(veiculo: Veiculo): void {
-    this.veiculoSelecionado = veiculo;
-  }
-
 }
