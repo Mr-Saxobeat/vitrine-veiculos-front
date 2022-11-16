@@ -14,4 +14,9 @@ export class VeiculoService {
     const veiculos = of(VEICULOS);
     return veiculos;
   }
+
+  getVeiculo(Id: Number): Observable<Veiculo> {
+    const veiculo = VEICULOS.find(v => v.Id === Id)!;
+    return of(veiculo);
+  }
 }
