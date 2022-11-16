@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VeiculoService } from '../veiculo.service';
 import { Veiculo } from './veiculo';
 
 @Component({
@@ -7,16 +8,22 @@ import { Veiculo } from './veiculo';
   styleUrls: ['./veiculos.component.css']
 })
 export class VeiculosComponent implements OnInit {
-  veiculo: Veiculo = {
-    Id: 1,
-    Marca: "MarcaVeiuclo",
-    Modelo: "modelosss",
-    Valor: 2
-  }
+  veiculos?: Veiculo[];
+  veiculoSelecionado?: Veiculo;
 
-  constructor() { }
+  constructor(private veiculoService: VeiculoService) { }
 
   ngOnInit(): void {
+    this.getVeiculos();
+  }
+
+  getVeiculos(): void {
+    this.veiculoService.getVeiculos()
+      .subscribe(veiculos => this.veiculos = veiculos);
+  }
+
+  onSelect(veiculo: Veiculo): void {
+    this.veiculoSelecionado = veiculo;
   }
 
 }
