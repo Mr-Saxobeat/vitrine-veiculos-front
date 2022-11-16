@@ -2,16 +2,9 @@
   <h2>Veículos</h2>
   <ul class="veiculos">
     <li *ngFor="let veiculo of veiculos">
-      <button
-        type="button"
-        (click)="onSelect(veiculo)"
-        [class.selected]="veiculo === veiculoSelecionado"
-        >
-        <span class="badge">{{ veiculo.Id }}</span>
-        <span class="nome">{{ veiculo.Marca }}</span>
-      </button>
+      <a routerLink="/detalhe/{{veiculo.Id}}">
+        <span>{{ veiculo.Marca }}</span>
+      </a>
     </li>
   </ul>
-
-  <app-veiculo-detalhe [veiculo]="veiculoSelecionado"></app-veiculo-detalhe>
 </div>
