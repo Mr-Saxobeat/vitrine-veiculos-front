@@ -18,6 +18,6 @@ export class VeiculosComponent implements OnInit {
 
   getVeiculos(): void {
     this.veiculoService.getVeiculos()
-      .subscribe(veiculos => this.veiculos = veiculos);
+      .subscribe(veiculos => this.veiculos = veiculos.results);
   }
 }
