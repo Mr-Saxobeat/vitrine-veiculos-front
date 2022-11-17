@@ -1,0 +1,22 @@
+<div class="container">
+  <form [formGroup]="novoVeiculoForm" class="row" (submit)="salvar()">
+    <div class="form-group">
+      <label for="Marca">Marca: </label>
+      <input id="Marca" type="text" formControlName="Marca">
+    </div>
+
+    <div class="form-group">
+      <label for="Modelo">Modelo: </label>
+      <input id="Modelo" type="text" formControlName="Modelo">
+    </div>
+
+    <div class="form-group">
+      <label for="Valor">Valor: </label>
+      <input id="Valor" type="text" formControlName="Valor">
+    </div>
+
+    <button type="submit">
+      Criar
+    </button>
+  </form>
+</div>
