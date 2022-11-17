@@ -1,9 +1,8 @@
 <div>
-  <h2>Veículos</h2>
   <ul class="veiculos">
     <li *ngFor="let veiculo of veiculos">
-      <a routerLink="/detalhe/{{veiculo.Id}}">
-        <span>{{ veiculo.Marca }}</span>
+      <a routerLink="/detalhe/{{veiculo.id}}">
+        {{ veiculo.Marca }}
       </a>
     </li>
   </ul>
