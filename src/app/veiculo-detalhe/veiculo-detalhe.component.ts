@@ -28,4 +28,7 @@ export class VeiculoDetalheComponent implements OnInit {
       .subscribe(veiculo => this.veiculo = veiculo);
   }
 
+  voltar(): void {
+    this.location.back();
+  }
 }
