@@ -1,8 +1,11 @@
+<button type="button" (click)="voltar()">Voltar</button>
 <div *ngIf="veiculo">
-  <h2>{{veiculo.Marca| uppercase}} Detalhes</h2>
-  <div>Id: {{veiculo.Id}}</div>
+  <h2>{{veiculo.Marca}}</h2>
   <div>
-    <label for="marca-veiculo">Marca: </label>
-    <input id="marca-veiculo" [(ngModel)]="veiculo.Marca" placeholder="marca">
+    <ul>
+      <li>Marca: {{ veiculo.Marca }}</li>
+      <li>Modelo: {{ veiculo.Modelo }}</li>
+      <li>Valor: {{ veiculo.Valor | currency }}</li>
+    </ul>
   </div>
 </div>
