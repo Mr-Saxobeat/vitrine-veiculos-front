@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { VeiculoService } from 'src/app/services/veiculo.service';
 import { Veiculo } from 'src/app/models/veiculo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-criar-veiculo',
@@ -11,11 +12,12 @@ import { Veiculo } from 'src/app/models/veiculo';
 export class CriarVeiculoComponent implements OnInit {
   novoVeiculoForm!: FormGroup;
   novoVeiculo?: Veiculo;
-  res: any;
+  response: any;
 
   constructor(
     private veiculoService: VeiculoService,
-    private formBuilde: FormBuilder
+    private formBuilde: FormBuilder,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -35,8 +37,9 @@ export class CriarVeiculoComponent implements OnInit {
 
     this.veiculoService.postVeiculo(this.novoVeiculo)
       .subscribe(response => {
-        this.res = response;
-        console.log(this.res);
+        this.response = response;
+        var id = this.response.id.toString() || null;
+        this.router.navigate([id]);
       });
   }
 }
