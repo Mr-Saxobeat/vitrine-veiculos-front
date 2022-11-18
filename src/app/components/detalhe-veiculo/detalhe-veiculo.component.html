@@ -13,7 +13,7 @@
     <input id="Valor" formControlName="Valor" type="text" [value]="veiculo.Valor">
     <br>
   </form>
-<button type="button" *ngIf="!emEdicao" (click)="editar()">Editar</button>
-<button type="button" *ngIf="emEdicao" (click)="salvar()">Salvar</button>
-<button type="button" (click)="excluir()">Excluir</button>
+<button type="button" *ngIf="!emEdicao && usuarioLogado()" (click)="editar()">Editar</button>
+<button type="button" *ngIf="emEdicao && usuarioLogado()" (click)="salvar()">Salvar</button>
+<button *ngIf="usuarioLogado()" type="button" (click)="excluir()">Excluir</button>
 </div>
