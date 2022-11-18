@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Veiculo } from './veiculos/veiculo';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PaginacaoVeiculo } from './veiculos/paginacaoVeiculo';
+import { HttpClient } from '@angular/common/http';
+import { Veiculo } from './models/veiculo';
+import { PaginacaoVeiculo } from './models/paginacao-veiculo';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +18,8 @@ export class VeiculoService {
     return this.http.get<PaginacaoVeiculo>(this.url);
   }
 
-  getVeiculo(Id: Number): Observable<Veiculo> {
-    return this.http.get<Veiculo>(this.url + Id);
+  getVeiculo(id: Number): Observable<Veiculo> {
+    return this.http.get<Veiculo>(this.url + id);
   }
 
   postVeiculo(novoVeiculo: Veiculo): Observable<Veiculo> {
