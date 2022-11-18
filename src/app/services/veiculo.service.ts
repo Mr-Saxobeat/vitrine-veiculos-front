@@ -18,11 +18,19 @@ export class VeiculoService {
     return this.http.get<PaginacaoVeiculo>(this.url);
   }
 
-  getVeiculo(id: Number): Observable<Veiculo> {
+  getVeiculo(id: number): Observable<Veiculo> {
     return this.http.get<Veiculo>(this.url + id);
   }
 
   postVeiculo(novoVeiculo: Veiculo): Observable<Veiculo> {
     return this.http.post<Veiculo>(this.url, novoVeiculo);
+  }
+
+  putVeiculo(veiculo: Veiculo): Observable<Veiculo> {
+    return this.http.put<Veiculo>(this.url + veiculo.id + '/', veiculo);
+  }
+
+  deleteVeiculo(id: number): Observable<any> {
+    return this.http.delete(this.url + id + '/');
   }
 }
