@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CriarVeiculoComponent } from './criar-veiculo/criar-veiculo.component';
-import { VeiculoDetalheComponent } from './veiculo-detalhe/veiculo-detalhe.component';
-import { VeiculosComponent } from './veiculos/veiculos.component';
+import { CriarVeiculoComponent } from './components/criar-veiculo/criar-veiculo.component';
+import { DetalheVeiculoComponent } from './components/detalhe-veiculo/detalhe-veiculo.component';
+import { ListarVeiculosComponent } from './components/listar-veiculos/listar-veiculos.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/veiculos', pathMatch: 'full' },
-  { path: 'veiculos', component: VeiculosComponent },
-  { path: 'detalhe/:Id', component: VeiculoDetalheComponent},
-  { path: 'criar', component: CriarVeiculoComponent}
+  { path: '', redirectTo: 'listar', pathMatch: 'full' },
+  { path: 'listar', component: ListarVeiculosComponent },
+  { path: 'criar', component: CriarVeiculoComponent },
+  { path: ':id', component: DetalheVeiculoComponent},
 ];
 
 @NgModule({
