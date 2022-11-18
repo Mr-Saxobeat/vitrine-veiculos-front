@@ -2,7 +2,7 @@
   <ul class="veiculos">
     <li *ngFor="let veiculo of veiculos">
       <a routerLink="/{{veiculo.id}}">
-        {{ veiculo.Marca }}
+        {{ veiculo.Marca }} - {{ veiculo.Modelo }}: R{{ veiculo.Valor | currency }}
       </a>
     </li>
   </ul>
