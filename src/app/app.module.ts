@@ -3,18 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { VeiculosComponent } from './veiculos/veiculos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { VeiculoDetalheComponent } from './veiculo-detalhe/veiculo-detalhe.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CriarVeiculoComponent } from './criar-veiculo/criar-veiculo.component';
+import { CriarVeiculoComponent } from './components/criar-veiculo/criar-veiculo.component';
+import { ListarVeiculosComponent } from './components/listar-veiculos/listar-veiculos.component';
+import { DetalheVeiculoComponent } from './components/detalhe-veiculo/detalhe-veiculo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VeiculosComponent,
-    VeiculoDetalheComponent,
-    CriarVeiculoComponent
+    CriarVeiculoComponent,
+    ListarVeiculosComponent,
+    DetalheVeiculoComponent
   ],
   imports: [
     BrowserModule,
