@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { VeiculoService } from '../../veiculo.service';
+import { VeiculoService } from 'src/app/services/veiculo.service';
 import { Veiculo } from 'src/app/models/veiculo';
 
 @Component({

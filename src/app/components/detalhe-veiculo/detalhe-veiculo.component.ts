@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { VeiculoService } from '../../veiculo.service';
+import { VeiculoService } from 'src/app/services/veiculo.service';
 import { Veiculo } from 'src/app/models/veiculo';
 import { Location } from '@angular/common';
 
