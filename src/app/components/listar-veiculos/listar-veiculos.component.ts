@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { VeiculoService } from '../veiculo.service';
-import { Veiculo } from './veiculo';
+import { VeiculoService } from 'src/app/veiculo.service';
+import { Veiculo } from 'src/app/models/veiculo';
 
 @Component({
-  selector: 'app-veiculos',
-  templateUrl: './veiculos.component.html',
-  styleUrls: ['./veiculos.component.css']
+  selector: 'app-listar-veiculos',
+  templateUrl: './listar-veiculos.component.html',
+  styleUrls: ['./listar-veiculos.component.css']
 })
-export class VeiculosComponent implements OnInit {
+export class ListarVeiculosComponent implements OnInit {
+
   veiculos?: Veiculo[];
 
   constructor(private veiculoService: VeiculoService) { }
