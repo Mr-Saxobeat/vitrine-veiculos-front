@@ -1,6 +1,9 @@
 <h1>{{ title }}</h1>
 <nav>
-  <a routerLink="criar">Criar</a>
   <a routerLink="listar">Listar</a>
+  <a routerLink="registrar" *ngIf="!usuarioLogado()">Registrar</a>
+  <a routerLink="logar" *ngIf="!usuarioLogado()">Logar</a>
+  <a routerLink="criar" *ngIf="usuarioLogado()">Criar</a>
+  <button (click)="logout()" *ngIf="usuarioLogado()">Logout</button>
 </nav>
 <router-outlet></router-outlet>
