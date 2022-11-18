@@ -9,6 +9,8 @@ import { CriarVeiculoComponent } from './components/criar-veiculo/criar-veiculo.
 import { ListarVeiculosComponent } from './components/listar-veiculos/listar-veiculos.component';
 import { DetalheVeiculoComponent } from './components/detalhe-veiculo/detalhe-veiculo.component';
 import { LoginComponent } from './components/login/login.component';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { LoginComponent } from './components/login/login.component';
     CriarVeiculoComponent,
     ListarVeiculosComponent,
     DetalheVeiculoComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
