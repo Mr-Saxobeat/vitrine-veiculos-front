@@ -1,11 +1,11 @@
 <button type="button" (click)="voltar()">Voltar</button>
 <div *ngIf="veiculo">
-  <h2>{{veiculo.Marca}}</h2>
+  <h2>{{ veiculo.Marca }}</h2>
   <div>
     <ul>
       <li>Marca: {{ veiculo.Marca }}</li>
       <li>Modelo: {{ veiculo.Modelo }}</li>
-      <li>Valor: {{ veiculo.Valor | currency }}</li>
+      <li>Valor: {{ veiculo.Valor }}</li>
     </ul>
   </div>
 </div>
