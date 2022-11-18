@@ -4,6 +4,7 @@ import { VeiculoService } from 'src/app/services/veiculo.service';
 import { Veiculo } from 'src/app/models/veiculo';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-detalhe-veiculo',
@@ -20,7 +21,8 @@ export class DetalheVeiculoComponent implements OnInit {
     private route: ActivatedRoute,
     private veiculoService: VeiculoService,
     private location: Location,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
   }
@@ -73,5 +75,9 @@ export class DetalheVeiculoComponent implements OnInit {
         this.router.navigate(['listar']);
       }
     )
+  }
+
+  usuarioLogado(): boolean {
+    return this.authService.usuarioLogado();
   }
 }
