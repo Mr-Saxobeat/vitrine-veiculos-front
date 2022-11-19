@@ -14,8 +14,12 @@ export class VeiculoService {
     private http: HttpClient
   ) { }
 
-  getVeiculos(): Observable<PaginacaoVeiculo> {
-    return this.http.get<PaginacaoVeiculo>(this.url);
+  getVeiculos(link: string = ""): Observable<PaginacaoVeiculo> {
+    if (link == "") {
+      return this.http.get<PaginacaoVeiculo>(this.url);
+    } else {
+      return this.http.get<PaginacaoVeiculo>(link);
+    }
   }
 
   getVeiculo(id: number): Observable<Veiculo> {
