@@ -10,6 +10,8 @@ import { Veiculo } from 'src/app/models/veiculo';
 export class ListarVeiculosComponent implements OnInit {
 
   veiculos?: Veiculo[];
+  proximaPaginaLink!: string;
+  anteriorPaginaLink!: string;
 
   constructor(private veiculoService: VeiculoService) { }
 
@@ -19,6 +21,19 @@ export class ListarVeiculosComponent implements OnInit {
 
   getVeiculos(): void {
     this.veiculoService.getVeiculos()
-      .subscribe(veiculos => this.veiculos = veiculos.results);
+      .subscribe(response => {
+        this.veiculos = response.results;
+        this.proximaPaginaLink = response.next;
+        this.anteriorPaginaLink = response.previous;
+      });
+  }
+
+  paginar(link: string): void {
+    this.veiculoService.getVeiculos(link)
+      .subscribe(response => {
+        this.veiculos = response.results;
+        this.proximaPaginaLink = response.next;
+        this.anteriorPaginaLink = response.previous;
+      })
   }
 }
