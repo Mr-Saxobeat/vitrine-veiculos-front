@@ -1,9 +1,17 @@
-<h1>{{ title }}</h1>
-<nav>
-  <a routerLink="listar">Listar</a>
-  <a routerLink="registrar" *ngIf="!usuarioLogado()">Registrar</a>
-  <a routerLink="logar" *ngIf="!usuarioLogado()">Logar</a>
-  <a routerLink="criar" *ngIf="usuarioLogado()">Criar</a>
-  <button (click)="logout()" *ngIf="usuarioLogado()">Logout</button>
-</nav>
-<router-outlet></router-outlet>
+<div>
+  <div class="d-flex justify-content-center pd-5 mt-2">
+    <h1>{{ title }}</h1>
+  </div>
+
+  <div class="d-flex justify-content-center mb-5">
+    <nav>
+      <a class="btn btn-secondary" routerLink="listar">Listar</a>
+      <a class="btn btn-secondary" routerLink="registrar" *ngIf="!usuarioLogado()">Registrar</a>
+      <a class="btn btn-secondary" routerLink="logar" *ngIf="!usuarioLogado()">Logar</a>
+      <a class="btn btn-secondary" routerLink="criar" *ngIf="usuarioLogado()">Criar</a>
+      <button class="btn btn-secondary" (click)="logout()" *ngIf="usuarioLogado()">Logout</button>
+    </nav>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

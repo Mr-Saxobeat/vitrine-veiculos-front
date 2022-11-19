@@ -1,18 +1,18 @@
-<form [formGroup]="loginForm">
-  <fieldset>
-      <legend>Login</legend>
-      <div class="form-field">
+<div>
+  <h1>Login</h1>
+  <form [formGroup]="loginForm">
+
+      <div class="form-group">
           <label for="username">Usuário:</label>
-          <input name="username" formControlName="username">
+          <input class="form-control" name="username" formControlName="username">
       </div>
-      <div class="form-field">
+
+      <div class="form-group">
           <label for="password">Senha:</label>
-          <input name="password" formControlName="password"
-                 type="password">
+          <input class="form-control" name="password" formControlName="password"
+                  type="password">
       </div>
-  </fieldset>
-  <div class="form-buttons">
-      <button class="button button-primary"
-              (click)="login()">Login</button>
-  </div>
-</form>
+
+    <button class="btn btn-primary" (click)="login()">Login</button>
+  </form>
+</div>

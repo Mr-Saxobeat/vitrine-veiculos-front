@@ -1,9 +1,18 @@
-<div>
-  <ul class="veiculos">
+<div class="d-flex justify-content-center flex-wrap">
+  <!-- <ul class="veiculos">
     <li *ngFor="let veiculo of veiculos">
       <a routerLink="/{{veiculo.id}}">
         {{ veiculo.Marca }} - {{ veiculo.Modelo }}: R{{ veiculo.Valor | currency }}
       </a>
     </li>
-  </ul>
+  </ul> -->
+
+  <div *ngFor="let veiculo of veiculos" class="card m-2" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ veiculo.Marca }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ veiculo.Modelo }}</h6>
+      <a routerLink="/{{veiculo.id}}" class="card-link">Detalhes</a>
+      <!-- <a href="#" class="card-link">Another link</a> -->
+    </div>
+  </div>
 </div>

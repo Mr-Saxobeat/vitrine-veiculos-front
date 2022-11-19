@@ -65,6 +65,7 @@ export class DetalheVeiculoComponent implements OnInit {
         this.veiculoForm.get('Modelo')?.disable();
         this.veiculoForm.get('Valor')?.disable();
         this.emEdicao = false;
+        this.router.navigate([this.veiculo?.id?.toString()])
       }
     )
   }

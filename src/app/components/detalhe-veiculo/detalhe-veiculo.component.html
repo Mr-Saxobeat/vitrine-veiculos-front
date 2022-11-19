@@ -1,19 +1,19 @@
 <div *ngIf="veiculo">
   <h2>{{ veiculo.Marca }} - {{ veiculo.Modelo }}</h2>
-  <form [formGroup]="veiculoForm">
+  <form [formGroup]="veiculoForm" class="form-group">
     <label for="Marca">Marca: </label>
-    <input id="Marca" type="text" formControlName="Marca" [value]="veiculo.Marca">
+    <input class="form-control" id="Marca" type="text" formControlName="Marca" [value]="veiculo.Marca">
     <br>
 
-    <label for="Modelo">Modelo: </label>
-    <input id="Modelo" formControlName="Modelo" type="text" [value]="veiculo.Modelo">
+    <label for="Modelo" >Modelo: </label>
+    <input class="form-control" id="Modelo" formControlName="Modelo" type="text" [value]="veiculo.Modelo">
     <br>
 
     <label for="Valor">Valor: </label>
-    <input id="Valor" formControlName="Valor" type="text" [value]="veiculo.Valor">
+    <input class="form-control" id="Valor" formControlName="Valor" type="text" [value]="veiculo.Valor">
     <br>
   </form>
-<button type="button" *ngIf="!emEdicao && usuarioLogado()" (click)="editar()">Editar</button>
-<button type="button" *ngIf="emEdicao && usuarioLogado()" (click)="salvar()">Salvar</button>
-<button *ngIf="usuarioLogado()" type="button" (click)="excluir()">Excluir</button>
+<button type="button" class="btn btn-primary m-2" *ngIf="!emEdicao && usuarioLogado()" (click)="editar()">Editar</button>
+<button type="button" class="btn btn-success m-2" *ngIf="emEdicao && usuarioLogado()" (click)="salvar()">Salvar</button>
+<button type="button" class="btn btn-danger m-2" *ngIf="usuarioLogado()" (click)="excluir()">Excluir</button>
 </div>
