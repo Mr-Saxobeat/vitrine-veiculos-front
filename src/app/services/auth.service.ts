@@ -18,17 +18,6 @@ export class AuthService {
     private tokenStorageService: TokenStorageService
   ) { }
 
-  usuarioLogado(): boolean {
-    var expirationTime = this.tokenStorageService.getAcessExpirationTime();
-
-    if (expirationTime > new Date()) {
-      return true;
-    } else {
-      this.tokenStorageService.signOut();
-      return false
-    }
-  }
-
   login(credentials: any): Observable<any> {
     return this.http.post(url + 'login/', {
       username: credentials.username,
