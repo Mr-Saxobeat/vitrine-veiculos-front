@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { AuthService } from 'src/app/services/auth.service';
 import { EventBusService } from 'src/app/services/event-bus.service';
 import { EventData } from 'src/app/services/event.class';
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private token: TokenStorageService,
-    private eventBusService: EventBusService
+    private eventBusService: EventBusService,
+    private toast: NgToastService
     ) { }
 
   ngOnInit(): void {
@@ -47,6 +49,11 @@ export class LoginComponent implements OnInit {
           this.token.saveDataToken(response);
           this.router.navigate(['listar']);
           this.eventBusService.emit(new EventData('login', null));
+        },
+        (error) => {
+          if (error.status == 401) {
+            this.toast.error({detail: "Erro:", summary: "Usuário ou senha incorreto!", duration: 3000})
+          }
         })
     }
   }
