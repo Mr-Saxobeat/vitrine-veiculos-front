@@ -18,22 +18,36 @@ export class TokenStorageService {
     window.sessionStorage.clear();
   }
 
-  public saveToken(token: any): void {
-    var access_token = token.access;
-    var refresh_token = token.refresh;
-
-    window.sessionStorage.removeItem(ACCESS_TOKEN_KEY);
-    window.sessionStorage.setItem(ACCESS_TOKEN_KEY, access_token);
-
-    window.sessionStorage.removeItem(REFRESH_TOKEN_KEY);
-    window.sessionStorage.setItem(REFRESH_TOKEN_KEY, refresh_token);
+  public saveDataToken(token: any): void {
+    this.saveAccessToken(token.access);
+    this.saveRefreshToken(token.refresh);
 
     var decodedToken = jwt_decode<any>(token.access);
-    var expirationTime = decodedToken['exp'];
+    this.saveAccessExpirationTime(decodedToken['exp']);
+    this.saveUser(decodedToken['username'], token.access);
+  }
+
+  public getAccessToken(): string {
+    return sessionStorage.getItem(ACCESS_TOKEN_KEY) || '';
+  }
+
+  public saveAccessToken(token: string): void {
+    window.sessionStorage.removeItem(ACCESS_TOKEN_KEY);
+    window.sessionStorage.setItem(ACCESS_TOKEN_KEY, token);
+  }
+
+  public getRefreshToken(): string {
+    return sessionStorage.getItem(REFRESH_TOKEN_KEY) || '';
+  }
+
+  public saveRefreshToken(token: string): void {
+    window.sessionStorage.removeItem(REFRESH_TOKEN_KEY);
+    window.sessionStorage.setItem(REFRESH_TOKEN_KEY, token);
+  }
+
+  public saveAccessExpirationTime(expirationTime: string): void {
     window.sessionStorage.removeItem(EXPIRATION_KEY);
     window.sessionStorage.setItem(EXPIRATION_KEY, expirationTime);
-
-    this.saveUser(token.access);
   }
 
   public getAcessExpirationTime(): any {
@@ -41,19 +55,9 @@ export class TokenStorageService {
     return date ? new Date(parseInt(date) * 1000) : null;
   }
 
-  public getToken(): string {
-    return sessionStorage.getItem(ACCESS_TOKEN_KEY) || '';
-  }
-
-  public getRefreshToken(): string {
-    return sessionStorage.getItem(REFRESH_TOKEN_KEY) || '';
-  }
-
-  public saveUser(token: any): void {
-    var decoded_token = jwt_decode<any>(token);
-    var username = decoded_token['username'];
+  public saveUser(username: string, token: string): void {
     window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(username));
+    window.sessionStorage.setItem(USER_KEY, JSON.stringify({username, token}));
   }
 
   public getUser(): any {
