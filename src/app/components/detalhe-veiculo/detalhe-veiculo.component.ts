@@ -5,6 +5,8 @@ import { Veiculo } from 'src/app/models/veiculo';
 import { Location } from '@angular/common';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { NgToastService } from 'ng-angular-popup';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-detalhe-veiculo',
@@ -16,19 +18,21 @@ export class DetalheVeiculoComponent implements OnInit {
   veiculo?: Veiculo;
   veiculoForm!: FormGroup;
   emEdicao: boolean = false;
+  isLoggedIn = false;
 
   constructor(
     private route: ActivatedRoute,
     private veiculoService: VeiculoService,
-    private location: Location,
     private router: Router,
-    private authService: AuthService
+    private tokenStorageService: TokenStorageService,
+    private toast: NgToastService
   ) {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
   }
 
   ngOnInit(): void {
     this.getVeiculo();
+    this.isLoggedIn = !!this.tokenStorageService.getAccessToken();
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -69,6 +73,7 @@ export class DetalheVeiculoComponent implements OnInit {
         this.veiculoForm.get('Modelo')?.disable();
         this.veiculoForm.get('Valor')?.disable();
         this.emEdicao = false;
+        this.toast.success({detail: "Editado:", summary: "Veículo editado com sucesso", duration: 3000});
         this.router.navigate([this.veiculo?.id?.toString()])
       }
     )
@@ -77,12 +82,9 @@ export class DetalheVeiculoComponent implements OnInit {
   excluir(): void {
     this.veiculoService.deleteVeiculo(this.id).subscribe(
       () => {
+        this.toast.warning({detail: "Excluído:", summary: "Veículo excluído", duration: 3000});
         this.router.navigate(['listar']);
       }
     )
-  }
-
-  usuarioLogado(): boolean {
-    return this.authService.usuarioLogado();
   }
 }
