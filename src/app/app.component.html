@@ -6,12 +6,13 @@
   <div class="d-flex justify-content-center mb-3">
     <nav>
       <a class="btn btn-secondary" routerLink="listar">Listar</a>
-      <a class="btn btn-secondary" routerLink="registrar" *ngIf="!usuarioLogado()">Registrar</a>
-      <a class="btn btn-secondary" routerLink="logar" *ngIf="!usuarioLogado()">Logar</a>
-      <a class="btn btn-secondary" routerLink="criar" *ngIf="usuarioLogado()">Criar</a>
-      <button class="btn btn-secondary" (click)="logout()" *ngIf="usuarioLogado()">Logout</button>
+      <a class="btn btn-secondary" routerLink="registrar" *ngIf="!isLoggedIn">Registrar</a>
+      <a class="btn btn-secondary" routerLink="logar" *ngIf="!isLoggedIn">Logar</a>
+      <a class="btn btn-secondary" routerLink="criar" *ngIf="isLoggedIn">Criar</a>
+      <button class="btn btn-secondary" (click)="logout()" *ngIf="isLoggedIn">Logout</button>
     </nav>
   </div>
 
   <router-outlet></router-outlet>
+  <lib-ng-toast></lib-ng-toast>
 </div>
