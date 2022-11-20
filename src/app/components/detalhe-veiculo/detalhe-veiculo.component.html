@@ -25,7 +25,7 @@
           >
         </app-mensagem>
   </form>
-<button type="button" class="btn btn-primary m-2" *ngIf="!emEdicao && usuarioLogado()" (click)="editar()">Editar</button>
-<button type="button" class="btn btn-success m-2" *ngIf="emEdicao && usuarioLogado()" (click)="salvar()">Salvar</button>
-<button type="button" class="btn btn-danger m-2" *ngIf="usuarioLogado()" (click)="excluir()">Excluir</button>
+<button type="button" class="btn btn-primary m-2" *ngIf="!emEdicao && this.isLoggedIn" (click)="editar()">Editar</button>
+<button type="button" class="btn btn-success m-2" *ngIf="emEdicao && this.isLoggedIn" (click)="salvar()">Salvar</button>
+<button type="button" class="btn btn-danger m-2" *ngIf="this.isLoggedIn" (click)="excluir()">Excluir</button>
 </div>
