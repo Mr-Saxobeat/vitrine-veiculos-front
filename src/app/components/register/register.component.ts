@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toast: NgToastService
     ) { }
 
   ngOnInit(): void {
@@ -37,7 +39,10 @@ export class RegisterComponent implements OnInit {
 
     const user = this.registerForm.value;
     this.authService.register(user)
-      .subscribe(response => this.router.navigate(['listar']))
+      .subscribe(response => {
+        this.toast.success({detail: "Usuário registrado", summary: "Logue para continuar.", duration: 3000})
+        this.router.navigate(['listar'])
+      })
   }
 
 }
