@@ -50,4 +50,10 @@ export class AuthService {
       last_name: user.last_name
     }, httpOptions);
   }
+
+  refreshToken(token: string) {
+    return this.http.post(url + 'refresh/', {
+      refresh: token
+    }, httpOptions);
+  }
 }
