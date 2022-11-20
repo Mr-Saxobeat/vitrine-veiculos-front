@@ -3,15 +3,27 @@
   <form [formGroup]="veiculoForm" class="form-group">
     <label for="Marca">Marca: </label>
     <input class="form-control" id="Marca" type="text" formControlName="Marca" [value]="veiculo.Marca">
-    <br>
+    <app-mensagem
+          *ngIf="f['Marca'].touched && f['Marca'].errors?.['required']"
+          mensagem="Marca é obrigatória"
+          >
+        </app-mensagem>
 
     <label for="Modelo" >Modelo: </label>
     <input class="form-control" id="Modelo" formControlName="Modelo" type="text" [value]="veiculo.Modelo">
-    <br>
+    <app-mensagem
+          *ngIf="f['Modelo'].touched && f['Modelo'].errors?.['required']"
+          mensagem="Modelo é obrigatório"
+          >
+        </app-mensagem>
 
     <label for="Valor">Valor: </label>
     <input class="form-control" id="Valor" formControlName="Valor" type="text" [value]="veiculo.Valor">
-    <br>
+    <app-mensagem
+          *ngIf="f['Valor'].touched && f['Valor'].errors?.['required']"
+          mensagem="Valor é obrigatório"
+          >
+        </app-mensagem>
   </form>
 <button type="button" class="btn btn-primary m-2" *ngIf="!emEdicao && usuarioLogado()" (click)="editar()">Editar</button>
 <button type="button" class="btn btn-success m-2" *ngIf="emEdicao && usuarioLogado()" (click)="salvar()">Salvar</button>
