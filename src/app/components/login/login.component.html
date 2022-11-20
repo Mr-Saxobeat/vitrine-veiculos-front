@@ -4,13 +4,28 @@
 
       <div class="form-group">
           <label for="username">Usuário:</label>
-          <input class="form-control" name="username" formControlName="username">
+          <input
+            class="form-control"
+            name="username"
+            formControlName="username"
+            [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
+            >
+          <app-mensagem
+            *ngIf="f['username'].touched && f['username'].errors?.['required']"
+            mensagem="Username é obrigatório"
+            >
+          </app-mensagem>
       </div>
 
       <div class="form-group">
           <label for="password">Senha:</label>
           <input class="form-control" name="password" formControlName="password"
                   type="password">
+          <app-mensagem
+          *ngIf="f['password'].touched && f['password'].errors?.['required']"
+          mensagem="Senha é obrigatória"
+          >
+        </app-mensagem>
       </div>
 
     <button class="btn btn-primary" (click)="login()">Login</button>

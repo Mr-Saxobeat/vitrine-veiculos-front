@@ -4,21 +4,41 @@
     <div class="form-group">
       <label for="username" >Username: </label>
       <input class="form-control" id="username" type="text" formControlName="username">
+      <app-mensagem
+          *ngIf="f['username'].touched && f['username'].errors?.['required']"
+          mensagem="Username é obrigatório"
+          >
+        </app-mensagem>
     </div>
 
     <div class="form-group">
       <label for="password">Senha: </label>
       <input class="form-control" id="password" type="password" formControlName="password">
+      <app-mensagem
+          *ngIf="f['password'].touched && f['password'].errors?.['required']"
+          mensagem="Senha é obrigatória"
+          >
+        </app-mensagem>
     </div>
 
     <div class="form-group">
       <label for="first_name">Nome: </label>
       <input class="form-control" id="first_name" type="text" formControlName="first_name">
+      <app-mensagem
+          *ngIf="f['first_name'].touched && f['first_name'].errors?.['required']"
+          mensagem="Nome é obrigatório"
+          >
+        </app-mensagem>
     </div>
 
     <div class="form-group">
       <label for="last_name">Sobrenome: </label>
       <input class="form-control" id="last_name" type="text" formControlName="last_name">
+      <app-mensagem
+          *ngIf="f['last_name'].touched && f['last_name'].errors?.['required']"
+          mensagem="Sobrenome é obrigatório"
+          >
+        </app-mensagem>
     </div>
 
     <button type="submit" class="btn btn-primary">Registrar</button>

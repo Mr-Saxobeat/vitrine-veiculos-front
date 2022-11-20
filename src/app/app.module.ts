@@ -11,6 +11,7 @@ import { DetalheVeiculoComponent } from './components/detalhe-veiculo/detalhe-ve
 import { LoginComponent } from './components/login/login.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { MensagemComponent } from './components/mensagem/mensagem.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RegisterComponent } from './components/register/register.component';
     ListarVeiculosComponent,
     DetalheVeiculoComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MensagemComponent
   ],
   imports: [
     BrowserModule,
