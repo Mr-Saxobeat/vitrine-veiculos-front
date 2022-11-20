@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authService.login(credentials)
         .subscribe((response) => {
-          this.token.saveToken(response);
+          this.token.saveDataToken(response);
           this.router.navigate(['listar']);
         })
     }
