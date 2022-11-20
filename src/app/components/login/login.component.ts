@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { EventBusService } from 'src/app/services/event-bus.service';
+import { EventData } from 'src/app/services/event.class';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private token: TokenStorageService
+    private token: TokenStorageService,
+    private eventBusService: EventBusService
     ) { }
 
   ngOnInit(): void {
@@ -43,6 +46,7 @@ export class LoginComponent implements OnInit {
         .subscribe((response) => {
           this.token.saveDataToken(response);
           this.router.navigate(['listar']);
+          this.eventBusService.emit(new EventData('login', null));
         })
     }
   }
