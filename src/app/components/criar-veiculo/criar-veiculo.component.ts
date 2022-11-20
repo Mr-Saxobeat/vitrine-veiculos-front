@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { VeiculoService } from 'src/app/services/veiculo.service';
 import { Veiculo } from 'src/app/models/veiculo';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-criar-veiculo',
@@ -18,6 +19,7 @@ export class CriarVeiculoComponent implements OnInit {
     private veiculoService: VeiculoService,
     private formBuilde: FormBuilder,
     private router: Router,
+    private toast: NgToastService
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,7 @@ export class CriarVeiculoComponent implements OnInit {
       .subscribe(response => {
         this.response = response;
         var id = this.response.id.toString() || null;
+        this.toast.info({detail: "Novo carro criado!"});
         this.router.navigate([id]);
       });
   }
