@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { MensagemComponent } from './components/mensagem/mensagem.component';
+import { NgToastModule } from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MensagemComponent } from './components/mensagem/mensagem.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgToastModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
