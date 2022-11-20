@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VeiculoService } from 'src/app/services/veiculo.service';
 import { Veiculo } from 'src/app/models/veiculo';
 import { Location } from '@angular/common';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -29,6 +29,10 @@ export class DetalheVeiculoComponent implements OnInit {
 
   ngOnInit(): void {
     this.getVeiculo();
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.veiculoForm.controls;
   }
 
   getVeiculo(): void {
